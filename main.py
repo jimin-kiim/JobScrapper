@@ -10,16 +10,16 @@ def home():
 @app.route("/report")
 def report():
     word=request.args.get('word')
-    fromDb = db.get(word)
+    existingJobs = db.get(word)
     if word : 
         word=word.lower()
-        if fromDb: 
-            jobs= fromDb
+        if existingJobs: 
+            jobs= existingJobs
         else : 
             jobs=get_jobs(word)
             db[word]=jobs
     else : 
         return redirect("/")
-    return render_template("report.html",resultsNumber = len(jobs), searchingBy=word)
+    return render_template("report.html",resultsNumber = len(jobs), searchingBy=word,jobs=jobs)
 
 app.run(host='127.0.0.1')
