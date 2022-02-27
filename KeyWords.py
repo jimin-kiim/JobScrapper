@@ -17,4 +17,5 @@
     pertinent for small projects like this.
 ✔️ django :
     pertinent for using db, admin, ...
+✔️  CSV(Comma Seperated Values)
 """

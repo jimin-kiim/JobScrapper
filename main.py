@@ -12,9 +12,9 @@ def home():
 @app.route("/report")
 def report():
     word=request.args.get('word')
+    word=word.lower()
     existingJobs = db.get(word)
     if word : 
-        word=word.lower()
         if existingJobs: 
             jobs= existingJobs
         else : 
