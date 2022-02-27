@@ -1,19 +1,16 @@
-from flask import Flask
+from flask import Flask, render_template,request
 app=Flask("JobScrapper")
 
 @app.route("/")
-# decorator : looks for a function right below itself and decorate it. 
 def home():
-    return "Hello ! "
+    return render_template("home.html")
 
-@app.route("/contact")
-def contact():
-    return "Contact Me !"
+@app.route("/report")
+def report():
+    word=request.args.get('word')
+    return render_template("report.html",searchingBy=word)
 
-@app.route("/<username>")
-# <> : placeholder
-def user(username):
-    return f"Hello {username} How are you doing? "
-
-    
 app.run(host='127.0.0.1')
+
+
+#  request : everytime I go to the website, that's a request. 
